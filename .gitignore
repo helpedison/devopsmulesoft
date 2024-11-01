@@ -4,7 +4,7 @@
 *.class
 
 # Package Files #
-*.jar
+
 *.war
 *.ear
 
@@ -19,7 +19,7 @@ tmp/**/*
 *.tmp
 *.bak
 *.swp
-*~.nib
+*~.nib23
 local.properties
 .settings/
 .loadpath
