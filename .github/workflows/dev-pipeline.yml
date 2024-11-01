@@ -1,0 +1,64 @@
+name: Build and deploy to testing pipeline
+
+on:
+  push:
+    branches:  
+     - dev
+    
+jobs:
+  build-dev:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: 8
+
+    - name: Install SAP JCo Native Library
+      env:
+        MULE_PASSWORD_SECRET: ${{secrets.mule_password_secret}}     
+      run: |
+        mvn install:install-file \
+          -Dfile=src/main/resources/libsapjco3.so \
+          -DgroupId=com.sap.conn.jco \
+          -DartifactId=libsapjco3 \
+          -Dversion=3.x.x \
+          -Dpackaging=so \
+          -Dclassifier=external-library --settings .maven/settings.xml || true
+
+
+
+    - name: Install SAP JCo Native sapjco3
+      env:
+        MULE_PASSWORD_SECRET: ${{secrets.mule_password_secret}}     
+      run: |   
+         mvn install:install-file -Dfile=src/main/resources/sapjco3.jar -DgroupId=com.sap.conn.jco -DartifactId=com.sap.conn.jco.sapjco3 -Dversion=3.x.x -Dpackaging=jar     
+
+
+    - name: Install SAP JCo Native sapidoc3
+      env:
+        MULE_PASSWORD_SECRET: ${{secrets.mule_password_secret}}     
+      run: |   
+        mvn install:install-file -Dfile=src/main/resources/sapidoc3.jar -DgroupId=com.sap.conn.idoc -DartifactId=com.sap.conn.idoc.sapidoc3 -Dversion=3.x.x -Dpackaging=jar          
+
+    - name: Build with Maven
+      env:
+        MULE_PASSWORD_SECRET: ${{secrets.mule_password_secret}}    
+      run: mvn clean package  --settings .maven/settings.xml
+ 
+    - name: Stamp artifact file name with commit hash
+      run: |
+        artifactName1=$(ls target/*.jar | head -1)
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        mv $artifactName1 $artifactName2
