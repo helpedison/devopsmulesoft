@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:sap="http://www.mulesoft.org/schema/mule/sap"
+	xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:email="http://www.mulesoft.org/schema/mule/email" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/sap http://www.mulesoft.org/schema/mule/sap/current/mule-sap.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
+	
+	
+	<email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="02323388-4797-4c81-912e-6d163a0e1549">
+	    <email:smtps-connection 
+	        host="smtp.gmail.com"
+	        user="strategysedison@gmail.com" 
+	        password="awkvxlvtfdmsmhxz"
+	         port="587">
+	        <tls:context>
+	            <tls:trust-store insecure="true"/>
+	        </tls:context>
+	    </email:smtps-connection>
+	</email:smtp-config>
+	 
+	<sap:sap-config name="SAP_Config" doc:name="SAP Config" doc:id="bc2d571e-5468-44bd-98d9-c7901829f361" >
+		<sap:simple-connection-provider-connection username="${secure::sap.rfc.user}" password="${secure::sap.rfc.pass}" systemNumber="00" client="${sap.rfc.host}" applicationServerHost="${sap.rfc.client_id}"/>
+	</sap:sap-config>
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="35f5d55a-ad91-4abc-b078-25a32650b6e7" file="properties\secure-${env}-config.properties" key="${encryptKey}" />
+	<configuration-properties doc:name="Configuration properties" doc:id="fdc5bacd-1551-4f93-8d0a-e6f9b4b04872" file="properties/${env}-config.yaml" />
+	<global-property doc:name="Global Property" doc:id="e507790f-303b-46d4-87c3-6bf0f7cbff03" name="encryptKey" value="Mu13S0fT.s3CuR3$" />
+	<global-property doc:name="Global Property" doc:id="e7b683e1-f755-4c2f-a8d5-cae2041a2372" name="env" value="dev" />
+	<flow name="prueba_cpiFlow" doc:id="16a8e5b4-d9ce-4f13-bfd7-30f251fac3af" >
+		<scheduler doc:name="Scheduler" doc:id="8cb97548-473c-466f-be8c-6eb40d4ec300" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="5000"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="11804e77-2341-4518-98a5-a9d5b2acf14c" message='"prueba"'/>
+		<email:send doc:id="2300d39a-ac3d-44b7-8da3-0a5477591948" config-ref="Email_SMTP" fromAddress="strategysedison@gmail.com" subject="IMPORTANT">
+			<email:to-addresses >
+				<email:to-address value="helpedison@gmail.com" />
+			</email:to-addresses>
+			<email:body contentType="text/html" >
+				<email:content ><![CDATA["<h1> Hello this is an important message </h1>"]]></email:content>
+			</email:body>
+		</email:send>
+	</flow>
+	<flow name="prueba_cpiFlow1" doc:id="017b7233-96be-446b-b7b1-cf5293d7941e" >
+		<scheduler doc:name="Scheduler" doc:id="89c08665-b525-4a2c-8cb0-c702366fbe99" >
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="dec72b5b-5c6c-4ef5-8acc-9cc96bfed8c4" message='"prueba"' />
+	</flow>
+	<flow name="put-hu-sap-flow" doc:id="d67e7e36-2afb-4045-9e4f-c67b24ab9175" >
+		<sap:function-listener doc:name="Function listener" doc:id="c1579a80-3747-4aa6-b3e9-8c653a0f4320" config-ref="SAP_Config" gatewayHost="${sap.rfc.gateway_host}" gatewayService="${sap.rfc.gateway_service}" programID="${sap.rfc.program_id}" targetedFunction="${sap.rfc.function_name}" />
+		<logger level="INFO" doc:name="XML SAP to s-oga" doc:id="44c94bee-9718-44ce-bac9-4752b0f103b1" message='#[%dw 2.0&#10;output application/json  indent=false&#10; &#10;---&#10;{&#10;&#10;  "request ":payload,&#10;  "system": "XML SAP to s-oga"&#10;&#10;}]' />
+		<logger level="INFO" doc:name="start" doc:id="3e2a0c7f-9f6a-41df-8603-e85d172949cd" message="**Start request OGA**" />
+		<logger level="INFO" doc:name="Logger SAP to s-oga" doc:id="b561b805-92e4-4996-8f17-02cbda2a19ee" message='#[%dw 2.0&#10;output application/json indent=false&#10; &#10;---&#10;{&#10;&#10;  "request ":vars.requestHu,&#10;  "system": "SAP to s-oga"&#10;&#10;}]' />
+		<logger level="INFO" doc:name="Logger s-oga" doc:id="071eb262-0be9-47db-bdaf-6a4809ee627d" message='#[%dw 2.0&#10;output application/json indent=false&#10; &#10;---&#10;{&#10;&#10;  "response ": payload,&#10;  "system": "mulesoft s-oga"&#10;&#10;}]' />
+		<ee:transform doc:name="Transform Message" doc:id="e49e8372-8247-4d63-b8a8-977be6df826c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[
+%dw 2.0
+output text/xml
+---
+{
+	"ZOGA_UPDATE_DATA": {
+		"import": {
+		},
+		"export": {
+			"OUTPUT": {
+				N_PALET: "prueba",  
+				TIPO: "S",
+				MSG: " -- "   default ""
+			}
+		}
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger p-hu" doc:id="d6d23a00-ab1c-4cf0-a4d8-9fab65c20668" message='#[%dw 2.0&#10;output application/json indent=false&#10; &#10;---&#10;{&#10;&#10;  "response ": payload,&#10;  "system": "mulesoft p-hu"&#10;&#10;}]' />
+	</flow>
+</mule>

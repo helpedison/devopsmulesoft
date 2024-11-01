@@ -1,0 +1,9 @@
+sap: 
+  rfc:
+    host: "10.10.10.202"
+    client_id: "300"
+    gateway_host: "10.10.10.202" 
+    gateway_service : "sapgw00"
+    program_id : "mulesoftfuncion"
+    function_name: "ZOGA_UPDATE_DATA"    
+    conection_count : "1"
