@@ -5,7 +5,7 @@ name: Build and deploy to testing pipeline
 on:
   push:
     branches:  
-     -feature/dev
+     - feature/dev
     
 jobs:
   build-dev:
