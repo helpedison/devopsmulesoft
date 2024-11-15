@@ -10,7 +10,7 @@ on:
 jobs:
   build-dev:
     runs-on: ubuntu-latest
-    enviaronment: DEV
+    environment: DEV
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
@@ -68,7 +68,7 @@ jobs:
   deploy-dev: 
     needs: build-dev
     runs-on: ubuntu-latest
-    enviaronment: DEV
+    environment: DEV
     steps:
     
 
