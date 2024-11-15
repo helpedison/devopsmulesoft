@@ -62,3 +62,49 @@ jobs:
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2
+  
+  deploy-dev: 
+    needs: build-dev
+    runs-on: ubuntu-latest
+
+    steps:
+    
+
+    
+    - uses: actions/checkout@v3
+    
+    - uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+ 
+
+
+
+    - name: Upload to Exchange 
+      env:    
+            MULE_PASSWORD_SECRET: ${{secrets.mule_password_secret}}
+      run: mvn clean -B   deploy -s .maven/settings.xml 
+           
+
+    - name: deploy cloubhub v2
+      env:
+            target: ${{secrets.TARGET}}
+            replicas: ${{ secrets.REPLICAS}}
+            vcores: ${{ secrets.VCORES}}
+            environment: ${{secrets.ENVIRONMENT}}  
+            name_mule_app: ${{secrets.MULE_APP_NAME}}  
+            MULE_PASSWORD_SECRET: ${{secrets.MULE_PASSWORD_SECRET}}
+            env: ${{secrets.ENV}}
+            encryptionKey: ${{secrets.ENCRYPTIONKEY}}
+            client_id : ${{secrets.CLIENT_ID}}        
+            client_secret: ${{secrets.CLIENT_SECRET}}
+
+ 
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy  \
+         --settings  .maven/settings.xml \
+         -Dmule.artifact=$artifactName -Dmule.artifact=$artifactName -Dcloudhub.target="$target" -Ddeployment.replicas"$replicas" -Ddeployment.vcores="$vcores" -Dcloudhub.environment="$environment" -Dcloudhub.application.name="$name_mule_app" -Denv="$env" -DencryptKey="$encryptionKey" -Dclient_id="$client_id" -Dclient_secret="$client_secret" -DskipDeploymentVerification="true"  \
