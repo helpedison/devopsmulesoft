@@ -10,6 +10,7 @@ on:
 jobs:
   build-dev:
     runs-on: ubuntu-latest
+    enviaronment: DEV
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
@@ -67,7 +68,7 @@ jobs:
   deploy-dev: 
     needs: build-dev
     runs-on: ubuntu-latest
-
+    enviaronment: DEV
     steps:
     
 
@@ -86,7 +87,7 @@ jobs:
 
     - name: Upload to Exchange 
       env:    
-            MULE_PASSWORD_SECRET: ${{secrets.mule_password_secret}}
+            MULE_PASSWORD_SECRET: ${{secrets.MULE_PASSWORD_SECRET}}
       run: mvn clean -B   deploy -s .maven/settings.xml 
            
 
