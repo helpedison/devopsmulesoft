@@ -1,0 +1,3 @@
+*** 
+
+hay que configurar el repositorios publicos para cloudhub2

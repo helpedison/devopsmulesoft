@@ -99,6 +99,7 @@
 		</dependency>
 	</dependencies>
 
+	 
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v3</id>
@@ -112,12 +113,25 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+			<id>mulesoft-surexport-repository</id>
+			<name>mulesoft-surexport-repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/f10bb144-ef3b-4bb2-a03f-0a949de8354b/maven</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+		    <id>codehaus-mule-repo</id>
+		    <name>codehaus-mule-repo</name>
+		    <url>
+		      https://repository-master.mulesoft.org/nexus/content/groups/public/
+		    </url>
+		    <layout>default</layout>
+		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
+			<name>mulesoft release repository</name>
 			<layout>default</layout>
 			<url>https://repository.mulesoft.org/releases/</url>
 			<snapshots>
@@ -125,5 +139,13 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>mulesoft-surexport-repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/f10bb144-ef3b-4bb2-a03f-0a949de8354b/maven</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 
 </project>
