@@ -93,16 +93,16 @@ jobs:
 
     - name: deploy cloubhub v2
       env:
-            target: ${{secrets.TARGET}}
-            replicas: ${{ secrets.REPLICAS}}
-            vcores: ${{ secrets.VCORES}}
-            environment: ${{secrets.ENVIRONMENT}}  
-            name_mule_app: ${{secrets.MULE_APP_NAME}}  
+            target: ${{vars.TARGET}}
+            replicas: ${{vars.REPLICAS}}
+            vcores: ${{vars.VCORES}}
+            environment: ${{vars.ENVIRONMENT}}  
+            name_mule_app: ${{vars.MULE_APP_NAME}}  
             MULE_PASSWORD_SECRET: ${{secrets.MULE_PASSWORD_SECRET}}
             env: ${{secrets.ENV}}
             encryptionKey: ${{secrets.ENCRYPTIONKEY}}
-            client_id : ${{secrets.CLIENT_ID}}        
-            client_secret: ${{secrets.CLIENT_SECRET}}
+            client_id : ${{vars.CLIENT_ID}}        
+            client_secret: ${{vars.CLIENT_SECRET}}
 
  
       run: |
