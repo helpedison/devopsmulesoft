@@ -30,6 +30,24 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<cloudhub2Deployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${deployment.mule.runtime}</muleVersion>
+						<businessGroupId>${project.groupId}</businessGroupId>
+						<provider>MC</provider>
+						<server>anypoint-exchange-v3</server>
+						<applicationName>${cloudhub.application.name}</applicationName>
+						<environment>${cloudhub.environment}</environment>
+						<target>${cloudhub.target}</target>
+						<replicas>${deployment.replicas}</replicas>
+						<vCores>${deployment.vcores}</vCores>
+						<properties>
+							<env>${env}</env>
+							<encryptKey>${encryptKey}</encryptKey>
+							<anypoint.platform.client_id>${client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${client_secret}</anypoint.platform.client_secret>
+						</properties>
+					</cloudhub2Deployment>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>com.sap.conn.jco</groupId>
