@@ -9,9 +9,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<app.runtime>4.5.1</app.runtime>
+		<app.runtime>4.5.1-20231011</app.runtime>
+		<mule.version>4.5.1-20231011</mule.version>
         <mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
-        <mule.version>4.5.1</mule.version>
         <maven.clean.plugin.version>4.0.0</maven.clean.plugin.version>
 	</properties>
 	<build>
@@ -27,7 +27,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudhub2Deployment>
+					<cloudHubV2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<businessGroupId>${project.groupId}</businessGroupId>
@@ -49,7 +49,7 @@
 							<anypoint.platform.client_id>${client_id}</anypoint.platform.client_id>
 							<anypoint.platform.client_secret>${client_secret}</anypoint.platform.client_secret>
 						</properties>
-					</cloudhub2Deployment>
+					</cloudHubV2Deployment>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>com.sap.conn.jco</groupId>
