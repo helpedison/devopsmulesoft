@@ -38,16 +38,16 @@
 						<target>${cloudhub.target}</target>
 						<replicas>${deployment.replicas}</replicas>
 						<vCores>${deployment.vcores}</vCores>
-						<deploymentSettings>
-<!-- 	                          <runtimeVersion>${mule.version}</runtimeVersion> -->
-	                          <enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
-	                          <updateStrategy>rolling</updateStrategy>
-	                          <autoscaling>
-							    <enabled>true</enabled>
-							    <minReplicas>1</minReplicas>
-							    <maxReplicas>2</maxReplicas>
-							  </autoscaling>
-	                   </deploymentSettings>
+<!-- 						<deploymentSettings> -->
+<!--                           <runtimeVersion>${mule.version}</runtimeVersion>  -->
+<!-- 	                          <enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes> -->
+<!-- 	                          <updateStrategy>rolling</updateStrategy> -->
+<!-- 	                          <autoscaling> -->
+<!-- 							    <enabled>true</enabled> -->
+<!-- 							    <minReplicas>1</minReplicas> -->
+<!-- 							    <maxReplicas>2</maxReplicas> -->
+<!-- 							  </autoscaling> -->
+<!-- 	                   </deploymentSettings> -->
 					   <properties>
 							<env>${env}</env>
 							<encryptKey>${encryptKey}</encryptKey>
