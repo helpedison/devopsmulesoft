@@ -7,15 +7,13 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 	<name>devopsmulesoft</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<app.runtime>4.5.1-20231011</app.runtime>
-		<deployment.mule.runtime>4.5.1-20231011</deployment.mule.runtime>
-		<mule.version>4.5.1-20231011</mule.version>		
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
-		<maven.clean.plugin.version>3.0.0</maven.clean.plugin.version>
+		<app.runtime>4.5.1</app.runtime>
+        <mule.maven.plugin.version>3.8.2</mule.maven.plugin.version>
+        <mule.version>4.5.1</mule.version>
+        <maven.clean.plugin.version>3.2.0</maven.clean.plugin.version>
 	</properties>
 	<build>
 		<plugins>
