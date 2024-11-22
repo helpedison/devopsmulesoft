@@ -58,7 +58,7 @@
                        <deploymentSettings>
                            <enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
                            <updateStrategy>rolling</updateStrategy>
-                           <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+<!--                            <generateDefaultPublicUrl>true</generateDefaultPublicUrl> -->
                            <http>
                                <inbound>
                                    <lastMileSecurity>true</lastMileSecurity>
