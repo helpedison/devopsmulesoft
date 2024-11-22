@@ -99,11 +99,11 @@ jobs:
             environment: Sandbox  
             name_mule_app: devopsmulesoft 
             MULE_PASSWORD_SECRET: 9aaaf8ea985e4f2e88f2552b4de57ae3~?~A297cD8366E7424ab8c5f63DE9251132
-            env: DEV
+            env: dev
             encryptionKey: Mu13S0fT.s3CuR3$
 
  
       run: |
         mvn deploy -DmuleDeploy  \
          --settings  .maven/settings.xml \
-         -Dmule.artifact=$artifactName -Dmule.artifact=$artifactName -Dcloudhub.target="$target" -Ddeployment.replicas"$replicas" -Ddeployment.vcores="$vcores" -Dcloudhub.environment="$environment" -Dcloudhub.application.name="$name_mule_app" -Denv="$env" -DencryptKey="$encryptionKey"  -DskipDeploymentVerification="true"  \
+         -Dmule.artifact=$artifactName -Dmule.artifact=$artifactName -Dcloudhub.target="$target" -Ddeployment.replicas"$replicas" -Ddeployment.vcores="$vcores" -Dcloudhub.environment="$environment" -Dcloudhub.application.name="$name_mule_app" -Denv="$env" -DencryptKey="$encryptionKey" \
