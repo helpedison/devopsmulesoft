@@ -42,11 +42,16 @@
 						<target>${cloudhub.target}</target>
 						<replicas>${deployment.replicas}</replicas>
 						<vCores>${deployment.vcores}</vCores>
+						<connectedAppClientId>9aaaf8ea985e4f2e88f2552b4de57ae3</connectedAppClientId>
+						<connectedAppClientSecret>A297cD8366E7424ab8c5f63DE9251132</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<properties>
 							<env>${env}</env>
 							<encryptKey>${encryptKey}</encryptKey>
 						</properties>
 						<deploymentSettings>
+							<enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
+							<updateStrategy>rolling</updateStrategy>
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 							<http>
 								<inbound>
