@@ -11,7 +11,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.5.1-20231011</app.runtime>
 		<mule.version>4.5.1-20231011</mule.version>
-        <mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+        <mule.maven.plugin.version>3.7.1</mule.maven.plugin.version>
         <maven.clean.plugin.version>4.0.0</maven.clean.plugin.version>
 	</properties>
 	<build>
@@ -27,7 +27,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubV2Deployment>
+					<cloudHub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<businessGroupId>${project.groupId}</businessGroupId>
@@ -39,17 +39,22 @@
 						<replicas>${deployment.replicas}</replicas>
 						<vCores>${deployment.vcores}</vCores>
 						<deploymentSettings>
-	                          <runtimeVersion>${mule.version}</runtimeVersion>
+<!-- 	                          <runtimeVersion>${mule.version}</runtimeVersion> -->
 	                          <enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
 	                          <updateStrategy>rolling</updateStrategy>
-	                    </deploymentSettings>
-						<properties>
+	                          <autoscaling>
+							    <enabled>true</enabled>
+							    <minReplicas>1</minReplicas>
+							    <maxReplicas>2</maxReplicas>
+							  </autoscaling>
+	                   </deploymentSettings>
+					   <properties>
 							<env>${env}</env>
 							<encryptKey>${encryptKey}</encryptKey>
 							<anypoint.platform.client_id>${client_id}</anypoint.platform.client_id>
 							<anypoint.platform.client_secret>${client_secret}</anypoint.platform.client_secret>
-						</properties>
-					</cloudHubV2Deployment>
+					  </properties>
+					</cloudHub2Deployment>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>com.sap.conn.jco</groupId>
