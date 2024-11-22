@@ -93,14 +93,14 @@ jobs:
 
     - name: deploy cloubhub v2
       env:
-            target: ${{vars.TARGET}}
-            replicas: ${{vars.REPLICAS}}
-            vcores: ${{vars.VCORES}}
-            environment: ${{vars.ENVIRONMENT}}  
-            name_mule_app: ${{vars.MULE_APP_NAME}}  
-            MULE_PASSWORD_SECRET: ${{secrets.MULE_PASSWORD_SECRET}}
-            env: ${{secrets.ENV}}
-            encryptionKey: ${{secrets.ENCRYPTIONKEY}}
+            target: Cloudhub-US-East-2
+            replicas: 1
+            vcores: 0.1
+            environment: Sandbox  
+            name_mule_app: devopsmulesoft 
+            MULE_PASSWORD_SECRET: 9aaaf8ea985e4f2e88f2552b4de57ae3~?~A297cD8366E7424ab8c5f63DE9251132
+            env: DEV
+            encryptionKey: Mu13S0fT.s3CuR3$
 
  
       run: |
