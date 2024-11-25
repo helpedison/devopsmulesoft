@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>f10bb144-ef3b-4bb2-a03f-0a949de8354b</groupId>
 	<artifactId>devopsmulesoft</artifactId>
@@ -13,7 +11,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.5.1-20231011</app.runtime>
 		<mule.version>4.6.9</mule.version>
-		<mule.maven.plugin.version>3.7.1</mule.maven.plugin.version>
+		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
 		<maven.clean.plugin.version>4.0.0</maven.clean.plugin.version>
 	</properties>
 	<build>
@@ -49,16 +47,6 @@
 							<env>dev</env>
 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
 						</properties>
-						<deploymentSettings>
-							<enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
-							<updateStrategy>rolling</updateStrategy>
-							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-							<http>
-								<inbound>
-									<lastMileSecurity>true</lastMileSecurity>
-								</inbound>
-							</http>
-						</deploymentSettings>
 					</cloudHub2Deployment>
 					<sharedLibraries>
 						<sharedLibrary>
@@ -78,7 +66,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
@@ -128,8 +115,6 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
-
-
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v3</id>
@@ -177,5 +162,4 @@
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
-
 </project>
