@@ -31,8 +31,6 @@
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<businessGroupId>${project.groupId}</businessGroupId>
-						<releaseChannel>LTS</releaseChannel>
-						<javaVersion>8</javaVersion>
 						<provider>MC</provider>
 						<server>anypoint-exchange-v3</server>
 						<applicationName>devopsmulesoft</applicationName>
@@ -40,9 +38,6 @@
 						<target>Cloudhub-US-East-2</target>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<connectedAppClientId>9aaaf8ea985e4f2e88f2552b4de57ae3</connectedAppClientId>
-						<connectedAppClientSecret>A297cD8366E7424ab8c5f63DE9251132</connectedAppClientSecret>
-						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<properties>
 							<env>dev</env>
 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
