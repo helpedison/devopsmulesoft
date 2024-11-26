@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>f10bb144-ef3b-4bb2-a03f-0a949de8354b</groupId>
 	<artifactId>devopsmulesoft</artifactId>
-	<version>1.0.9</version>
+	<version>1.1.0</version>
 	<packaging>mule-application</packaging>
 	<name>devopsmulesoft</name>
 	<properties>
@@ -48,17 +48,6 @@
 							<env>dev</env>
 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
 						</properties>
-						<deploymentSettings>
-							<enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
-							<updateStrategy>rolling</updateStrategy>
-							<http>
-								<inbound>
-									<lastMileSecurity>false</lastMileSecurity>
-									<forwardSslSession>false</forwardSslSession>
-								</inbound>
-							</http>
-							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-						</deploymentSettings>
 					</cloudHub2Deployment>
 					<sharedLibraries>
 						<sharedLibrary>
