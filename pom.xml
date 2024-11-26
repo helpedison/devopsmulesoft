@@ -29,7 +29,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<classifier>mule-application</classifier>
+					 
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
@@ -38,16 +38,16 @@
 						<muleVersion>4.4.0</muleVersion>
 						<server>anypoint-exchange-v3</server>
 						<applicationName>devopsmulesoft</applicationName>
-						<releaseChannel>NONE</releaseChannel>
+<!-- 						<releaseChannel>NONE</releaseChannel> -->
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<deploymentSettings>
                             <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
                         </deploymentSettings>
-<!-- 					   <properties> -->
-<!-- 							<env>dev</env> -->
-<!-- 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey> -->
-<!-- 						</properties> -->
+					   <properties>
+							<env>dev</env>
+							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
+						</properties>
 					</cloudhub2Deployment>
 <!-- 					</cloudHub2Deployment> -->
 					<sharedLibraries>
