@@ -31,16 +31,20 @@
 				<configuration>
 					<cloudHub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>${mule.version}</muleVersion>
-						<businessGroupId>${project.groupId}</businessGroupId>
 						<provider>MC</provider>
-						<server>anypoint-exchange-v3</server>
-						<applicationName>devopsmulesoft</applicationName>
 						<environment>Sandbox</environment>
 						<target>Cloudhub-EU-West-2</target>
+						<muleVersion>4.4.0</muleVersion>
+						<server>anypoint-exchange-v3</server>
+						<applicationName>devopsmulesoft</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<properties>
+						<deploymentSettings>
+						        <lastMileSecurity>false</lastMileSecurity>
+						        <forwardSslSession>false</forwardSslSession>
+						        <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+   					   </deploymentSettings>
+					   <properties>
 							<env>dev</env>
 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
 						</properties>
