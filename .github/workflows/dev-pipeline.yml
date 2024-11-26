@@ -104,6 +104,6 @@ jobs:
 
  
       run: |
-        mvn deploy -DmuleDeploy  \
+        mvn deploy -DmuleDeploy -X \
          --settings  .maven/settings.xml \
          -Dmule.artifact=$artifactName -Dmule.artifact=$artifactName -Dcloudhub.target="$target" -Ddeployment.replicas"$replicas" -Ddeployment.vcores="$vcores" -Dcloudhub.environment="$environment" -Dcloudhub.application.name="$name_mule_app" -Denv="$env" -DencryptKey="$encryptionKey" \
