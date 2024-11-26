@@ -9,9 +9,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<app.runtime>4.5.1</app.runtime>
-		<mule.version>4.5.1</mule.version>
-		<mule.maven.plugin.version>3.8.1</mule.maven.plugin.version>
+		<app.runtime>4.4.0-20240219</app.runtime>
+		<mule.version>4.4.0</mule.version>
+		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
 		<maven.clean.plugin.version>4.0.0</maven.clean.plugin.version>
 	</properties>
 	<build>
@@ -43,10 +43,10 @@
 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
 						</properties>
 						<deploymentSettings>
-					        <lastMileSecurity>false</lastMileSecurity>
-					        <forwardSslSession>false</forwardSslSession>
-					        <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-   						</deploymentSettings>
+							<lastMileSecurity>false</lastMileSecurity>
+							<forwardSslSession>false</forwardSslSession>
+							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+						</deploymentSettings>
 					</cloudHub2Deployment>
 					<sharedLibraries>
 						<sharedLibrary>
