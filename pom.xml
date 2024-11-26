@@ -29,7 +29,8 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHub2Deployment>
+					<classifier>mule-application</classifier>
+					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
 						<environment>Sandbox</environment>
@@ -47,7 +48,8 @@
 <!-- 							<env>dev</env> -->
 <!-- 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey> -->
 <!-- 						</properties> -->
-					</cloudHub2Deployment>
+					</cloudhub2Deployment>
+<!-- 					</cloudHub2Deployment> -->
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>com.sap.conn.jco</groupId>
