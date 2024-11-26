@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>f10bb144-ef3b-4bb2-a03f-0a949de8354b</groupId>
 	<artifactId>devopsmulesoft</artifactId>
-	<version>1.1.2</version>
+	<version>1.1.0</version>
 	<packaging>mule-application</packaging>
 	<name>devopsmulesoft</name>
 	<properties>
@@ -13,7 +13,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.4.0</app.runtime>
 		<mule.version>4.4.0</mule.version>
-		<mule.maven.plugin.version>4.0.1</mule.maven.plugin.version>		
+		<mule.maven.plugin.version>4.1.1</mule.maven.plugin.version>
+		<maven.clean.plugin.version>3.8.1</maven.clean.plugin.version>
 	</properties>
 	<build>
 		<plugins>
