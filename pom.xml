@@ -45,8 +45,14 @@
 							<encryptKey>Mu13S0fT.s3CuR3$</encryptKey>
 						</properties>
 						<deploymentSettings>
-							<lastMileSecurity>false</lastMileSecurity>
-							<forwardSslSession>false</forwardSslSession>
+							<enforceDeployingReplicasAcrossNodes>true</enforceDeployingReplicasAcrossNodes>
+							<updateStrategy>rolling</updateStrategy>
+							<http>
+								<inbound>
+									<lastMileSecurity>false</lastMileSecurity>
+									<forwardSslSession>false</forwardSslSession>
+								</inbound>
+							</http>
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 						</deploymentSettings>
 					</cloudHub2Deployment>
