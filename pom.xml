@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>f10bb144-ef3b-4bb2-a03f-0a949de8354b</groupId>
 	<artifactId>devopsmulesoft</artifactId>
-	<version>1.0.8</version>
+	<version>1.0.9</version>
 	<packaging>mule-application</packaging>
 	<name>devopsmulesoft</name>
 	<properties>
